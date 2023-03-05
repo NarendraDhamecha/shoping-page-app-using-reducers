@@ -20,7 +20,7 @@ const CartItem = (props) => {
   }
 
   return (
-    <li key={Math.random()} className={classes.item}>
+    <li className={classes.item}>
       <header>
         <h3>{title}</h3>
         <div className={classes.price}>

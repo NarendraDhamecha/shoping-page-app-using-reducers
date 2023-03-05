@@ -8,6 +8,10 @@ const CartItemSlice = createSlice({
     name: "cart-item",
     initialState,
     reducers: {
+        setCartItem(state, action){
+           state.items = [...action.payload];
+        },
+
         addToCart(state, action) {
            const existingIndex = state.items.findIndex((item) => {
             return item.title === action.payload.title;

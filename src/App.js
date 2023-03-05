@@ -6,12 +6,22 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { CartActions } from "./redux-store/CartSlice";
 import Notification from "./components/UI/Notification";
+import { CartItemActions } from "./redux-store/CartItemSlice";
 
 function App() {
   const showCart = useSelector((state) => state.cart.showCart);
   const cart = useSelector((state) => state.cartItem.items);
   const notification = useSelector((state) => state.cart.notification);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+     const getCartData = async () => {
+      const res = await fetch('https://shopping-page-app-using-redux-default-rtdb.firebaseio.com/cart.json');
+      const data = await res.json();
+      dispatch(CartItemActions.setCartItem(data));
+     }
+     getCartData();
+  },[dispatch])
 
   useEffect(() => {
     const sendCartData = async () => {

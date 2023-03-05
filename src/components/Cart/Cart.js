@@ -8,6 +8,7 @@ const Cart = (props) => {
 
   const cartItems = items.map((item) => {
     return (<CartItem
+      key={Math.random()}
       item={{ title: item.title, quantity: item.quantity, price: item.price }}
     />)
   })
